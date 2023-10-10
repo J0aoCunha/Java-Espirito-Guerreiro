@@ -4,9 +4,9 @@ public class oraculo {
     String Nome;
     guerreiro Warrior;
 
-    public oraculo(String nome, int qtdvidas) {
+    public oraculo(String nome, guerreiro guerreiro) {
         this.Nome = nome;
-        Warrior.qtdVidas = qtdvidas;
+        this.Warrior= guerreiro;
     }
 
  public  String setNome() {

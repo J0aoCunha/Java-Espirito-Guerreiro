@@ -4,6 +4,11 @@ public class guerreiro {
     String Nome;
     int qtdVidas;
 
+    public guerreiro(String nome, int qtdvidas) {
+        this.Nome = nome;
+        this.qtdVidas = qtdvidas;
+    }
+
     void vidaExtra(){
         String vidaExtra;
     }

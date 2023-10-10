@@ -7,21 +7,27 @@ public class guerreiro {
     public guerreiro(String nome, int qtdvidas) {
         this.Nome = nome;
         this.qtdVidas = qtdvidas;
+
     }
 
-    void vidaExtra(){
-        String vidaExtra;
-    }
+ //   String vidaExtra(){
+ //       return setVidas(qtdvidas);
+ //   }
     Random random = new Random();
-    int min = 1;
-    int max = 20;
 
    int setVidas(int qtdvidas){
        this.qtdVidas = qtdvidas;
+       int numeroSorteado = 0;
+
        if(qtdvidas >= 9 && qtdvidas <=12){
-           int numeroSorteado = random.nextInt(max - min + 1) + min;
+
+           int min = 0;
+           int max = 20;
+            numeroSorteado = random.nextInt(max - min + 1) + min;
        }
-       return setVidas(qtdvidas);
+
+       System.out.println("Você recebeu " + numeroSorteado + " pontos de vida extra!!");
+       return numeroSorteado;
    }
 
 }

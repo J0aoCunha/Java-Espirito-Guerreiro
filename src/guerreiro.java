@@ -19,8 +19,8 @@ public class guerreiro {
 
        if(qtdVidas >= 9 && qtdVidas <=12){
 
-           int min = 0;
-           int max = 20;
+           int min = 9;
+           int max = 12;
             numeroSorteado = random.nextInt(max - min + 1) + min;
 
             this.qtdVidas += numeroSorteado;
@@ -28,11 +28,21 @@ public class guerreiro {
            System.out.println("Você recebeu " + numeroSorteado + " pontos de vida extra!!\nAgora você tem " + this.qtdVidas+ " \n");
        }
 
-
-
-
        return qtdVidas;
 
    }
+
+
+   public  void diminuirVida(){
+       this.qtdVidas --;
+
+       if(this.qtdVidas > 0){
+           InOut.MsgDeAviso("Alerta", "Você perdeu um ponto de vida. Agora você tem " + this.qtdVidas);
+       }else {
+           InOut.MsgDeErro("Alerta", "Você Perdeu o jogo");
+       }
+
+   }
+
 
 }

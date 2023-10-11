@@ -1,17 +1,14 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class oraculo {
     String Nome;
     guerreiro Warrior;
+    Scanner Teclado = new Scanner(System.in);
     public oraculo(String nome, guerreiro guerreiro) {
         this.Nome = nome;
-        this.Warrior= guerreiro;
+        this.Warrior = guerreiro;
     }
-
- public  String setNome() {
-     return Nome;
-    }
-
 
     public String prologoIntroducao() {
 
@@ -28,6 +25,8 @@ public class oraculo {
         Random random = new Random();
         int numeroSorteado = 0;
 
+        int chuteNumeroAleatorio;
+        int i = 0;
         int min = 1;
         int max = 100;
 
@@ -35,7 +34,28 @@ public class oraculo {
 
         System.out.println("Eu sorteei um número aleatório entre 1 e 100, PorFavor tente adivinhar.");
 
-        
+        for(int tentativas = 1; tentativas != numeroSorteado; tentativas++){
+
+            chuteNumeroAleatorio = Teclado.nextInt();
+
+          if (chuteNumeroAleatorio < numeroSorteado){
+              System.out.println("chute um numero maior");
+          } else if (chuteNumeroAleatorio > numeroSorteado) {
+              System.out.println("chute um numero menor\n");
+          }else {
+              System.out.println("parabens voce acertou o numero!!");
+              break;
+          }
+
+          Warrior.qtdVidas --;
+
+          if(Warrior.qtdVidas > 0){
+              System.out.println("Você perdeu um ponto de vida. Agora você tem " + Warrior.qtdVidas);
+          }else {
+              System.out.println("Suas Vidas acabaram. Você perdeu!!");
+          }
+
+        }
 
         return numeroSorteado;
     }

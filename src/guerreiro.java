@@ -9,25 +9,30 @@ public class guerreiro {
         this.qtdVidas = qtdvidas;
 
     }
-
- //   String vidaExtra(){
- //       return setVidas(qtdvidas);
- //   }
+  //  String vidaExtra(){
+  //  return setVidas(this.qtdVidas);
+  // }
     Random random = new Random();
 
-   int setVidas(int qtdvidas){
-       this.qtdVidas = qtdvidas;
+   int setVidas(){
        int numeroSorteado = 0;
 
-       if(qtdvidas >= 9 && qtdvidas <=12){
+       if(qtdVidas >= 9 && qtdVidas <=12){
 
            int min = 0;
            int max = 20;
             numeroSorteado = random.nextInt(max - min + 1) + min;
+
+            this.qtdVidas += numeroSorteado;
+
+           System.out.println("Você recebeu " + numeroSorteado + " pontos de vida extra!!\nAgora você tem " + this.qtdVidas+ " \n");
        }
 
-       System.out.println("Você recebeu " + numeroSorteado + " pontos de vida extra!!");
-       return numeroSorteado;
+
+
+
+       return qtdVidas;
+
    }
 
 }

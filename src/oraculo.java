@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class oraculo {
     String Nome;
     guerreiro Warrior;
-    Scanner Teclado = new Scanner(System.in);
     public oraculo(String nome, guerreiro guerreiro) {
         this.Nome = nome;
         this.Warrior = guerreiro;
@@ -12,10 +11,9 @@ public class oraculo {
 
     public void prologoIntroducao() {
 
-        InOut.MsgDeInformacao("Introduçao:", "Bem-vindo, Guerreiro " + Warrior.Nome + "Eu sou o  " + this.Nome + "Você possui " + Warrior.qtdVidas + " pontos vidas para enfrentar esta jornada épica.Vamos Jogar!");
+        InOut.MsgDeInformacao("Introduçao:", "Bem-vindo, Guerreiro  "  + Warrior.Nome + "\n Eu sou o  " + this.Nome + "\n Você possui " + Warrior.qtdVidas+ " pontos vidas para enfrentar esta jornada épica.\n\nVamos Jogar!");
 
 }
-
 
     public int loadLevel1() {
         Random random = new Random();
@@ -46,7 +44,6 @@ public class oraculo {
         }
           return numeroSorteado;
     }
-
 
    public boolean loadLevel2(int opcao){
 

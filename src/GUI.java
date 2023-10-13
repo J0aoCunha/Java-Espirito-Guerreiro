@@ -20,13 +20,14 @@ public class GUI {
 
         // Cria a animação do oráculo e define sua posição.
         Animation animation = new Animation(new Sprite("resources/oraculo-spritesheet.png"),100);
+        JComponent animationComponent = animation.getComponent();
         int xOraculo = (int) Math.round(dimensoesTela.width * 0.275);
         int yOraculo = (int) Math.round(dimensoesTela.height * 0.58);
-        animation.component.setBounds(xOraculo,yOraculo,128,128);
+        animationComponent.setBounds(xOraculo,yOraculo,128,128);
 
         // Adiciona os elementos criados ao container.
         container.add(imagemFundo,999);
-        container.add(animation.component,0);
+        container.add(animationComponent,0);
 
         // Adiciona o container a janela e deixa ela visível.
         janela.add(container);

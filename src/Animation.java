@@ -4,11 +4,10 @@ import java.awt.event.ActionListener;
 
 public class Animation implements ActionListener {
 
-    Sprite sprite;
-    Timer timer;
-    JLabel component;
-    int colunaAtual;
-    int linhaAtual;
+    private Sprite sprite;
+    private JLabel component;
+    private int colunaAtual;
+    private int linhaAtual;
 
     public Animation(Sprite sprite, int delay) {
 
@@ -22,9 +21,13 @@ public class Animation implements ActionListener {
         linhaAtual = 0;
 
         // Cria e inicia o temporizador responsável por controlar o delay da animação.
-        timer = new Timer(delay, this);
+        Timer timer = new Timer(delay, this);
         timer.start();
 
+    }
+
+    public JLabel getComponent() {
+        return component;
     }
 
     @Override

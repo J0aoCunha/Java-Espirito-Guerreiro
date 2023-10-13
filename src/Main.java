@@ -3,7 +3,7 @@ public class Main {
 
         GUI gui = new GUI("resources/background.jpg");
 
-        guerreiro guerreiro1 = new guerreiro("João");
+        /*guerreiro guerreiro1 = new guerreiro("João");
         oraculo oraculo1 = new oraculo("Oráculo Master",guerreiro1 );
 
         guerreiro1.setVidas();
@@ -16,7 +16,7 @@ public class Main {
 
         oraculo1.loadLevel2(InOut.leInt(" 1 = Par e 2 = Impar"));
 
-        gui.fecharJanela();
+        gui.fecharJanela();*/
 
     }
 

@@ -32,4 +32,8 @@ public class Sprite {
 
     }
 
+    public int getFramesPorLinha() {
+        return qtdFrames / qtdLinhas;
+    }
+
 }

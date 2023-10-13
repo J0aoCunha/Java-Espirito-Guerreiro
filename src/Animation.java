@@ -7,7 +7,8 @@ public class Animation implements ActionListener {
     Sprite sprite;
     Timer timer;
     JLabel component;
-    int frameAtual;
+    int colunaAtual;
+    int linhaAtual;
 
     public Animation(Sprite sprite, int delay) {
 
@@ -17,7 +18,8 @@ public class Animation implements ActionListener {
         // Cria o componente e define como o primeiro frame.
         component = new JLabel();
         component.setIcon(new ImageIcon(sprite.getSprite(0,0)));
-        frameAtual = 0;
+        colunaAtual = 0;
+        linhaAtual = 0;
 
         // Cria e inicia o temporizador responsável por controlar o delay da animação.
         timer = new Timer(delay, this);
@@ -29,16 +31,21 @@ public class Animation implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         // Incrementa o frame atual
-        frameAtual++;
+        colunaAtual++;
 
-        /* Se o frame atual for maior do que a quantidade disponível, volte para o ínicio.
-         * Se não, altere para a imagem a seguir.
-         */
-        if (frameAtual >= sprite.qtdFrames - 1) {
-            component.setIcon(new ImageIcon(sprite.getSprite(0,0)));
-            frameAtual = 0;
+        // Se o frame atual já é da próxima linha, incrementar.
+        if ((colunaAtual + 1) / (linhaAtual + 1) > sprite.getFramesPorLinha()) {
+            linhaAtual++;
+            colunaAtual = 0;
+        }
+
+        // Se o frame atual for menor que a quantidade de frames, atualizar. Se não, volte ao começo.
+        if (colunaAtual + 1 <= sprite.getFramesPorLinha() && linhaAtual + 1 <= sprite.qtdLinhas) {
+            component.setIcon(new ImageIcon(sprite.getSprite(colunaAtual,linhaAtual)));
         } else {
-            component.setIcon(new ImageIcon(sprite.getSprite(frameAtual,0)));
+            component.setIcon(new ImageIcon(sprite.getSprite(0,0)));
+            colunaAtual = 0;
+            linhaAtual = 0;
         }
 
     }

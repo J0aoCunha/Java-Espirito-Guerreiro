@@ -3,9 +3,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * A classe <tt>Animation</tt> permite a criação de
+ * A classe Animation permite a criação de
  * animações baseadas em spritesheets, representadas pela
- * classe <tt>Sprite</tt>. Em resumo, essa classe encapsula
+ * classe Sprite. Em resumo, essa classe encapsula
  * os métodos necessários para percorrer entre os frames, atualizando
  * o componente exibido na tela.
  */

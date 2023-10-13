@@ -13,7 +13,7 @@ public class Oraculo {
 
     private void prologoIntroducao() {
 
-        InOut.MsgDeInformacao("Introdução", "Bem-vindo, Guerreiro "  + warrior.nome + "!\nEu sou o " + this.nome + ".\nVocê possui " + warrior.qtdVidas+ " vidas para enfrentar esta jornada épica!\n\nVamos Jogar?");
+        InOut.MsgDeInformacao("Introdução", "Bem-vindo, Guerreiro "  + warrior.getNome() + "!\nEu sou o " + this.nome + ".\nVocê possui " + warrior.getQtdVidas() + " vidas para enfrentar esta jornada épica!\n\nVamos Jogar?");
 
     }
 
@@ -27,7 +27,7 @@ public class Oraculo {
 
         InOut.MsgDeAviso("Nível 1","Tente adivinhar o número de 1 a 100 que eu sorteei aleatoriamente!\nLembre-se que a cada tentativa errada, uma vida será perdida.");
 
-        while (warrior.qtdVidas > 0) {
+        while (warrior.getQtdVidas() > 0) {
 
             int chuteNumeroAleatorio = InOut.leInt("Insira sua tentativa:");
 

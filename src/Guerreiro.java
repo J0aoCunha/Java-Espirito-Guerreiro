@@ -1,24 +1,31 @@
 import java.util.Random;
 
 public class Guerreiro {
-    String nome;
-    int qtdVidas;
+
+    private String nome;
+    private int qtdVidas;
 
     public Guerreiro(String nome) {
         this.nome = nome;
-        setVidas();
+        sortearVidas();
     }
 
+    public String getNome() {
+        return nome;
+    }
 
-   void setVidas(){
+    public int getQtdVidas() {
+        return qtdVidas;
+    }
+
+    private void sortearVidas(){
         Random random = new Random();
-           int min = 9;
-           int max = 12;
-           this.qtdVidas = random.nextInt(max - min + 1) + min;
-   }
+        int min = 9;
+        int max = 12;
+        this.qtdVidas = random.nextInt(max - min + 1) + min;
+    }
 
-
-   public  void diminuirVida(){
+    public void diminuirVida(){
        this.qtdVidas --;
 
        if(this.qtdVidas > 0){
@@ -26,13 +33,12 @@ public class Guerreiro {
        }else {
            InOut.MsgDeErro("Alerta", "Que pena! Você perdeu.");
        }
+    }
 
-   }
-
-   public String vidaExtra(){
+    public String vidaExtra(){
 
        return InOut.leString("Implore pela sua VIDA HAHAHAHA!");
 
-   }
+    }
 
 }

@@ -8,45 +8,43 @@ import java.io.IOException;
 
 public class GUI {
 
-    JFrame janela;
-    JLayeredPane painel;
-    JLabel imagemFundo;
-    Dimension dimensoesTela;
+    private JFrame janela;
+    private JLayeredPane container = new JLayeredPane();;
+    protected static Dimension dimensoesTela = Toolkit.getDefaultToolkit().getScreenSize();
 
     public GUI(String caminhoBackground) {
 
-        // Instancia uma nova janela (JFrame) e define como maximizada.
-        janela = new JFrame();
-        janela.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        janela.setTitle("Espírito Guerreiro");
+        // Cria a janela e define seu background.
+        setJanela("Espírito Guerreiro");
+        JLabel imagemFundo = criarImagemFundo(caminhoBackground);
 
-        // Define o encerramento do programa quando se a janela for fechada.
-        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // Obtêm as dimensões da tela.
-        dimensoesTela = Toolkit.getDefaultToolkit().getScreenSize();
-
-        // Cria o componente que irá ficar com a imagem de fundo.
-        imagemFundo = new JLabel();
-        ImageIcon imagem = criarImageIcon(caminhoBackground);
-        ImageIcon imagemRedimensionada = redimensionarImagemParaTela(imagem, dimensoesTela);
-        imagemFundo.setIcon(imagemRedimensionada);
-        imagemFundo.setBounds(0,0,dimensoesTela.width, dimensoesTela.height);
-
-        // Cria um novo container e adiciona a imagem a ele.
-        painel = new JLayeredPane();
-        painel.add(imagemFundo,1);
-
+        // Cria a animação do oráculo e define sua posição.
         Animation animation = new Animation(new Sprite("resources/oraculo-spritesheet.png"),100);
-        painel.add(animation.component,0);
         int xOraculo = (int) Math.round(dimensoesTela.width * 0.275);
         int yOraculo = (int) Math.round(dimensoesTela.height * 0.58);
         animation.component.setBounds(xOraculo,yOraculo,128,128);
 
+        // Adiciona os elementos criados ao container.
+        container.add(imagemFundo,999);
+        container.add(animation.component,0);
+
         // Adiciona o container a janela e deixa ela visível.
-        janela.add(painel);
+        janela.add(container);
         janela.setVisible(true);
 
+    }
+
+    private void setJanela(String titulo) {
+
+        janela = new JFrame();
+        janela.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        janela.setTitle(titulo);
+        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    }
+
+    public void fecharJanela() {
+        janela.dispatchEvent(new WindowEvent(janela, WindowEvent.WINDOW_CLOSING));
     }
 
     public static ImageIcon criarImageIcon(String caminhoArquivo) {
@@ -69,8 +67,15 @@ public class GUI {
         return new ImageIcon(imgRedimensionada);
     }
 
-    public void fecharJanela() {
-        janela.dispatchEvent(new WindowEvent(janela, WindowEvent.WINDOW_CLOSING));
+    private static JLabel criarImagemFundo (String caminhoArquivo) {
+
+        JLabel imagemFundo = new JLabel();
+        ImageIcon imagem = criarImageIcon(caminhoArquivo);
+        ImageIcon imagemRedimensionada = redimensionarImagemParaTela(imagem, dimensoesTela);
+        imagemFundo.setIcon(imagemRedimensionada);
+        imagemFundo.setBounds(0,0,dimensoesTela.width, dimensoesTela.height);
+
+        return imagemFundo;
     }
 
 }

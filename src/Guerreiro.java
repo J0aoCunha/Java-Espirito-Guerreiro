@@ -7,7 +7,7 @@ public class Guerreiro {
 
     public Guerreiro(String nome) {
         this.nome = nome;
-        sortearVidas();
+        setVidas();
     }
 
     public String getNome() {
@@ -18,7 +18,7 @@ public class Guerreiro {
         return qtdVidas;
     }
 
-    private void sortearVidas(){
+    private void setVidas(){
         Random random = new Random();
         int min = 9;
         int max = 12;

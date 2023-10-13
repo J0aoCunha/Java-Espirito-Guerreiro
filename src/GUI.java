@@ -9,7 +9,7 @@ import java.io.IOException;
 public class GUI {
 
     private JFrame janela;
-    private JLayeredPane container = new JLayeredPane();;
+    private JLayeredPane container = new JLayeredPane();
     protected static Dimension dimensoesTela = Toolkit.getDefaultToolkit().getScreenSize();
 
     public GUI(String caminhoBackground) {

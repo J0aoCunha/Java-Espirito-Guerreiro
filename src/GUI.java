@@ -9,7 +9,7 @@ import java.io.IOException;
 public class GUI {
 
     JFrame janela;
-    JPanel painel;
+    JLayeredPane painel;
     JLabel imagemFundo;
     Dimension dimensoesTela;
 
@@ -31,10 +31,17 @@ public class GUI {
         ImageIcon imagem = criarImageIcon(caminhoBackground);
         ImageIcon imagemRedimensionada = redimensionarImagemParaTela(imagem, dimensoesTela);
         imagemFundo.setIcon(imagemRedimensionada);
+        imagemFundo.setBounds(0,0,dimensoesTela.width, dimensoesTela.height);
 
         // Cria um novo container e adiciona a imagem a ele.
-        painel = new JPanel();
-        painel.add(imagemFundo);
+        painel = new JLayeredPane();
+        painel.add(imagemFundo,1);
+
+        Animation animation = new Animation(new Sprite("resources/oraculo-spritesheet.png"),100);
+        painel.add(animation.component,0);
+        int xOraculo = (int) Math.round(dimensoesTela.width * 0.275);
+        int yOraculo = (int) Math.round(dimensoesTela.height * 0.58);
+        animation.component.setBounds(xOraculo,yOraculo,128,128);
 
         // Adiciona o container a janela e deixa ela visível.
         janela.add(painel);

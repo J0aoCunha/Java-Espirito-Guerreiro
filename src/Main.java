@@ -3,8 +3,8 @@ public class Main {
 
         GUI gui = new GUI("resources/background.jpg");
 
-        Guerreiro guerreiro1 = new Guerreiro("João");
-        Oraculo oraculo1 = new Oraculo("Oráculo Master",guerreiro1 );
+        Guerreiro guerreiro1 = new Guerreiro(InOut.leString("Informe seu nome."));
+        Oraculo oraculo1 = new Oraculo("Oráculo Master",guerreiro1);
 
         boolean level1 = oraculo1.loadLevel1();
 

@@ -25,6 +25,10 @@ public class Guerreiro {
         this.qtdVidas = random.nextInt(max - min + 1) + min;
     }
 
+    public void aumentarVida() {
+        this.qtdVidas++;
+    }
+
     public void diminuirVida(){
        this.qtdVidas --;
 

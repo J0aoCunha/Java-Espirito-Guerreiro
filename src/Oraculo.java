@@ -8,13 +8,45 @@ public class Oraculo {
     public Oraculo(String nome, Guerreiro guerreiro) {
         this.nome = nome;
         this.warrior = guerreiro;
-        prologoIntroducao();
+        boolean level1 = false, level2 = false;
+        boolean desejaJogar = prologoIntroducao();
+
+        if (desejaJogar) {
+            level1 = loadLevel1();
+            if (warrior.getQtdVidas() == 0){
+                decidirVidaExtra();
+            }
+        } else {
+            return;
+        }
+
+        if (level1 && warrior.getQtdVidas() > 0) {
+            level2 = loadLevel2();
+        }
+
+        if (level1 && level2) {
+            prologoVencedor();
+        } else {
+            prologoPerdedor();
+        }
+
     }
 
-    private void prologoIntroducao() {
+    private boolean prologoIntroducao() {
 
-        InOut.MsgDeInformacao("Introdução", "Bem-vindo, Guerreiro "  + warrior.getNome() + "!\nEu sou o " + this.nome + ".\nVocê possui " + warrior.getQtdVidas() + " vidas para enfrentar esta jornada épica!\n\nVamos Jogar?");
+        String[] opcoes = {"Não", "Sim"};
+        int escolha = InOut.leOpcoes("Introdução",this.nome + ": Bem-vindo, Guerreiro "  + warrior.getNome() + "! Eu sou o " + this.nome + ".\n" + this.nome + ": No Espírito Guerreiro, você passará por alguns desafios. Cuidado! Você possui apenas " + warrior.getQtdVidas() + " vidas para enfrentar esta jornada épica!\nSe você ganhar o desafio, revelarei algo sobre seu futuro.\nVamos Jogar?", opcoes);
 
+        return escolha != 0;
+
+    }
+
+    private void prologoVencedor() {
+        InOut.MsgDeInformacao("Fim de Jogo", this.nome + ": Guerreiro "  + warrior.getNome() + ", parabéns! Com muita determinação, você ganhou.\n" + this.nome + ": Parabéns pela coragem e perspicácia! Seu caminho é muito promissor e seu futuro é brilhante.");
+    }
+
+    private void prologoPerdedor() {
+        InOut.MsgDeInformacao("Fim de Jogo", this.nome + ": Guerreiro "  + warrior.getNome() + ", que pena! Infelizmente, você perdeu o jogo.\n" + this.nome + ": Tente novamente.");
     }
 
     public boolean loadLevel1() {
@@ -49,32 +81,36 @@ public class Oraculo {
 
    public boolean loadLevel2(){
 
-       String[] opcoes = {"Par","Ímpar"};
-       int opcao = InOut.leOpcoes("Nível 2","Selecione par ou ímpar.", opcoes);
+        while (warrior.getQtdVidas() > 0) {
+            String[] opcoes = {"Par","Ímpar"};
+            int opcao = InOut.leOpcoes("Nível 2","Selecione par ou ímpar.", opcoes);
 
-       Random random = new Random();
-       int numeroGuerreiro, numeroOraculo, soma;
-       int min = 0;
-       int max = 5;
+            Random random = new Random();
+            int numeroGuerreiro, numeroOraculo, soma;
+            int min = 0;
+            int max = 5;
 
-       numeroGuerreiro = random.nextInt(max - min + 1) + min;
-       numeroOraculo = random.nextInt(max - min + 1) + min;
+            numeroGuerreiro = random.nextInt(max - min + 1) + min;
+            numeroOraculo = random.nextInt(max - min + 1) + min;
 
-       soma = numeroGuerreiro + numeroOraculo;
+            soma = numeroGuerreiro + numeroOraculo;
 
-       if((soma % 2 == 0 && Objects.equals(opcoes[opcao], "Par"))||(soma % 2 != 0 && Objects.equals(opcoes[opcao], "Ímpar"))){
-            InOut.MsgDeInformacao("Nível 2", "Parabéns, você acertou!\nA soma dos números era " + soma + ".");
-       } else {
-           warrior.diminuirVida();
-           return false;
-       }
+            if((soma % 2 == 0 && Objects.equals(opcoes[opcao], "Par"))||(soma % 2 != 0 && Objects.equals(opcoes[opcao], "Ímpar"))){
+                InOut.MsgDeInformacao("Nível 2", "Parabéns, você acertou!\nA soma dos números era " + soma + ".");
+                return true;
+            } else {
+                warrior.diminuirVida();
+            }
+        }
 
-       return true;
+        return false;
+
    }
 
    public boolean decidirVidaExtra() {
         String apelo = warrior.vidaExtra();
         int contagemPalavras = apelo.split(" ").length;
+        warrior.aumentarVida();
         return contagemPalavras > 5;
    }
 

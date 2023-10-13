@@ -6,8 +6,6 @@ public class Main {
         Guerreiro guerreiro1 = new Guerreiro("João");
         Oraculo oraculo1 = new Oraculo("Oráculo Master",guerreiro1 );
 
-        oraculo1.prologoIntroducao();
-
         boolean level1 = oraculo1.loadLevel1();
 
         if (level1 || oraculo1.decidirVidaExtra()) {

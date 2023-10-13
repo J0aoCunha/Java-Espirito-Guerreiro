@@ -2,14 +2,16 @@ import java.util.Objects;
 import java.util.Random;
 
 public class Oraculo {
-    String nome;
-    Guerreiro warrior;
+    private String nome;
+    private Guerreiro warrior;
+
     public Oraculo(String nome, Guerreiro guerreiro) {
         this.nome = nome;
         this.warrior = guerreiro;
+        prologoIntroducao();
     }
 
-    public void prologoIntroducao() {
+    private void prologoIntroducao() {
 
         InOut.MsgDeInformacao("Introdução", "Bem-vindo, Guerreiro "  + warrior.nome + "!\nEu sou o " + this.nome + ".\nVocê possui " + warrior.qtdVidas+ " vidas para enfrentar esta jornada épica!\n\nVamos Jogar?");
 

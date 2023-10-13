@@ -248,6 +248,23 @@ public class InOut {
     }
 
     /**
+     * Este metodo eh para entrada de uma opção desejada. Tem como parametros
+     * de entrada uma String que indica o cabecalho da janela, uma String que
+     * indicara para o usuário o que está sendo solicitado por essa janela e
+     * uma lista de opções em String.
+     * Le uma opção e retorna o valor inteiro correspondente ao indice dessa opcao.
+     *
+     * @param cabecalho define o cabecalho da janela
+     * @param frase indica o que será lido
+     * @param opcoes indica a lista de opções
+     * @return inteiro correspondente ao índice da lista de opções
+     */
+    public static int leOpcoes(String cabecalho, String frase, String[] opcoes) {
+
+        return JOptionPane.showOptionDialog(null, frase, cabecalho,JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoes, opcoes[0]);
+    }
+
+    /**
      * Este metodo foi criado para mandar uma mensagem com o icone de
      * ERRO
      *

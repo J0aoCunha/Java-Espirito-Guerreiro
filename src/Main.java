@@ -1,18 +1,12 @@
 public class Main {
     public static void main(String[] args) {
 
-        guerreiro guerreiro1 = new guerreiro("João");
-        oraculo oraculo1 = new oraculo("Oráculo Master",guerreiro1 );
+        GUI gui = new GUI("resources/background.jpg");
 
-        guerreiro1.setVidas();
+        Guerreiro guerreiro1 = new Guerreiro(InOut.leString("Informe seu nome."));
+        Oraculo oraculo1 = new Oraculo("Oráculo Master",guerreiro1);
 
-        oraculo1.prologoIntroducao();
-
-        guerreiro1.vidaExtra();
-
-        oraculo1.loadLevel1();
-
-        oraculo1.loadLevel2(InOut.leInt(" 1 = Par e 2 = Impar"));
+        gui.fecharJanela();
 
     }
 

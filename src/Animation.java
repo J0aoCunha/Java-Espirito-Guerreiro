@@ -43,7 +43,7 @@ public class Animation implements ActionListener {
         }
 
         // Se o frame atual for menor que a quantidade de frames, atualizar. Se não, volte ao começo.
-        if (colunaAtual + 1 <= sprite.getFramesPorLinha() && linhaAtual + 1 <= sprite.qtdLinhas) {
+        if (colunaAtual + 1 <= sprite.getFramesPorLinha() && linhaAtual + 1 <= sprite.getQtdLinhas()) {
             component.setIcon(new ImageIcon(sprite.getSprite(colunaAtual,linhaAtual)));
         } else {
             component.setIcon(new ImageIcon(sprite.getSprite(0,0)));

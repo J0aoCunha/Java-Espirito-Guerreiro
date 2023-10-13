@@ -5,10 +5,11 @@ import java.io.IOException;
 
 public class Sprite {
 
-    BufferedImage spritesheet;
-    int qtdFrames;
-    int qtdLinhas;
-    static int tileSize = 128;
+    private BufferedImage spritesheet;
+    private int qtdFrames;
+
+    private int qtdLinhas;
+    private static int tileSize = 128;
 
     public Sprite(String caminhoArquivo) {
 
@@ -30,6 +31,10 @@ public class Sprite {
 
         return spritesheet.getSubimage(xGrid * tileSize, yGrid * tileSize, tileSize, tileSize);
 
+    }
+
+    public int getQtdLinhas() {
+        return qtdLinhas;
     }
 
     public int getFramesPorLinha() {

@@ -1,10 +1,21 @@
 import java.util.Objects;
 import java.util.Random;
 
+/**
+ * A classe Oraculo permite a criação de um novo jogo.
+ * Essa classe encapsula os atributos e métodos
+ * necessários para a execução dos níveis do jogo.
+ */
 public class Oraculo {
     private String nome;
     private Guerreiro warrior;
 
+    /**
+     * Instancia um novo objeto da classe, inicializando seus principais atributos.
+     * Além de executar a história e os níveis do jogo.
+     * @param nome do oráculo
+     * @param guerreiro jogador associado ao oráculo.
+     */
     public Oraculo(String nome, Guerreiro guerreiro) {
         this.nome = nome;
         this.warrior = guerreiro;
@@ -32,23 +43,40 @@ public class Oraculo {
 
     }
 
+    /**
+     * Exibe a história introdutória do jogo e pergunta se o jogador
+     * deseja iniciar o jogo.
+     * @return booleano que define se o jogador quer ou não jogar
+     */
     private boolean prologoIntroducao() {
 
-        String[] opcoes = {"Não", "Sim"};
+        String[] opcoes = {"Sim", "Não"};
         int escolha = InOut.leOpcoes("Introdução",this.nome + ": Bem-vindo, Guerreiro "  + warrior.getNome() + "! Eu sou o " + this.nome + ".\n" + this.nome + ": No Espírito Guerreiro, você passará por alguns desafios. Cuidado! Você possui apenas " + warrior.getQtdVidas() + " vidas para enfrentar esta jornada épica!\nSe você ganhar o desafio, revelarei algo sobre seu futuro.\nVamos Jogar?", opcoes);
 
-        return escolha != 0;
+        return escolha != 1;
 
     }
 
+    /**
+     * Exibe a história final caso o jogador vença ambos os níveis.
+     */
     private void prologoVencedor() {
         InOut.MsgDeInformacao("Fim de Jogo", this.nome + ": Guerreiro "  + warrior.getNome() + ", parabéns! Com muita determinação, você ganhou.\n" + this.nome + ": Parabéns pela coragem e perspicácia! Seu caminho é muito promissor e seu futuro é brilhante.");
     }
 
+    /**
+     * Exibe a história final caso o jogador perca um ou mais níveis.
+     */
     private void prologoPerdedor() {
         InOut.MsgDeInformacao("Fim de Jogo", this.nome + ": Guerreiro "  + warrior.getNome() + ", que pena! Infelizmente, você perdeu o jogo.\n" + this.nome + ": Tente novamente.");
     }
 
+    /**
+     * Executa a fase 1 do jogo, que consiste em um
+     * jogo de adivinhação, onde o jogador precisa
+     * adivinhar o número de 1 a 100 sorteado pelo oráculo.
+     * @return booleano se o jogador venceu ou não a fase.
+     */
     public boolean loadLevel1() {
         Random random = new Random();
         int numeroSorteado;
@@ -79,6 +107,14 @@ public class Oraculo {
         return false;
     }
 
+    /**
+     * Executa a fase 2 do jogo, que consiste em
+     * um jogo de ímpar ou par em que o jogador
+     * precisa selecionar sua opção e verificar
+     * se a soma dos números sorteados será correspondente
+     * a sua opção inicial.
+     * @return booleano se o jogador venceu ou não a fase.
+     */
    public boolean loadLevel2(){
 
         while (warrior.getQtdVidas() > 0) {
@@ -107,10 +143,18 @@ public class Oraculo {
 
    }
 
+    /**
+     * Define se o jogador terá direito a uma vida extra
+     * ou não baseado em seu apelo. Caso ele possua mais de
+     * 5 palavras, seu apelo será aceito.
+     * @return booleano se o jogador obteve ou não a vida extra.
+     */
    public boolean decidirVidaExtra() {
         String apelo = warrior.vidaExtra();
         int contagemPalavras = apelo.split(" ").length;
-        warrior.aumentarVida();
+        if (contagemPalavras > 5) {
+            warrior.aumentarVida();
+        }
         return contagemPalavras > 5;
    }
 

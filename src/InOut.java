@@ -1,16 +1,16 @@
 import javax.swing.JOptionPane;
 
 /**
- * A classe <tt>leDadosWin</tt> permite a leitura de dados de tipos nativos e de 
- * instancias da classe <tt>String</tt> a partir do teclado, atraves de uma 
+ * A classe leDadosWin permite a leitura de dados de tipos nativos e de 
+ * instancias da classe String a partir do teclado, atraves de uma 
  * janela. Basicamente esta classe encapsula o funcionamento dos metodos da clase
- * <tt>JOptionPane</tt>, que pode ser usado como entrada padrao de dados.
+ * JOptionPane, que pode ser usado como entrada padrao de dados.
  * <ul>
- * <li>Os metodos sao estaticos para facilitar o uso da classe
+ * <li>Os metodos sao estaticos para facilitar o uso da classe</li>
  * <li>Criacao de metodos sobrecarregados para que valores <i>default</i> possam ser 
- *     usados
- * <li>Tratamento das excecoes
- *
+ *     usados</li>
+ * <li>Tratamento das excecoes</li>
+ * </ul>
  */
 public class InOut {
     /**

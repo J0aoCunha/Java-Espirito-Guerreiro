@@ -6,12 +6,22 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * A classe GUI é responsável pela interface gráfica
+ * do programa. Ela encapsula os métodos responsáveis pela
+ * exibição de elemento, além de possuir alguns métodos
+ * estáticos utilitários.
+ */
 public class GUI {
 
     private JFrame janela;
     private JLayeredPane container = new JLayeredPane();
     protected static Dimension dimensoesTela = Toolkit.getDefaultToolkit().getScreenSize();
 
+    /**
+     * Instancia um novo objeto da classe e inicializa seus principais atributos.
+     * @param caminhoBackground caminho do arquivo para a imagem do plano de fundo.
+     */
     public GUI(String caminhoBackground) {
 
         // Cria a janela e define seu background.
@@ -35,6 +45,12 @@ public class GUI {
 
     }
 
+    /**
+     * Define o atributo janela da interface gráfica.
+     * Além de deixá-la maximizada por padrão e finalizar
+     * o programa ao fechá-la.
+     * @param titulo da janela
+     */
     private void setJanela(String titulo) {
 
         janela = new JFrame();
@@ -44,10 +60,19 @@ public class GUI {
 
     }
 
+    /**
+     * Fecha a janela.
+     */
     public void fecharJanela() {
         janela.dispatchEvent(new WindowEvent(janela, WindowEvent.WINDOW_CLOSING));
     }
 
+    /**
+     * Retorna um objeto ImageIcon a partir de um caminho de arquivo de imagem.
+     * @param caminhoArquivo caminho do arquivo da imagem.
+     * @return o ImageIcon correspondente a imagem.
+     * @see ImageIcon
+     */
     public static ImageIcon criarImageIcon(String caminhoArquivo) {
 
         BufferedImage imagem = null;
@@ -61,6 +86,14 @@ public class GUI {
 
     }
 
+    /**
+     * Retorna um ImageIcon redimensionado de acordo com os parâmetros repassados.
+     * @param imagem o objeto ImageIcon da imagem a ser redimensionada.
+     * @param dimensoes as dimensões para qual a imagem será redimensionada.
+     * @return o objeto ImageIcon da imagem redimensionada.
+     * @see Dimension
+     * @see ImageIcon
+     */
     public static ImageIcon redimensionarImagemParaTela(ImageIcon imagem, Dimension dimensoes) {
 
         Image imgRedimensionada = imagem.getImage().getScaledInstance(dimensoes.width, dimensoes.height, Image.SCALE_DEFAULT);
@@ -68,6 +101,12 @@ public class GUI {
         return new ImageIcon(imgRedimensionada);
     }
 
+    /**
+     * Retorna um componente de imagem de fundo a partir de um caminho de arquivo.
+     * @param caminhoArquivo caminho do arquivo da imagem de fundo.
+     * @return o componente que contêm a imagem de fundo.
+     * @see JLabel
+     */
     private static JLabel criarImagemFundo (String caminhoArquivo) {
 
         JLabel imagemFundo = new JLabel();

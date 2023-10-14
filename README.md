@@ -22,7 +22,12 @@ Para executar o jogo, é necessário compilar e executar a classe `Main`. O jogo
 
 - Java SDK instalado
 
+## Integrantes do Grupo
 
+- João Victor da Silva Cunha ([@J0aoCunha](https://github.com/J0aoCunha))
+- Emanuel José Silva ([@emanueljsweb](https://github.com/emanueljsweb))
+- Gabriel da Silva Reboli ([@GabrielReboli](https://github.com/GabrielReboli))
+- Pedro Lopes Monteiro ([@Pedro-Lopes-Monteiro](https://github.com/Pedro-Lopes-Monteiro))
 
 
 
